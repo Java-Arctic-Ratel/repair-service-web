@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h2>Order List</h2>
+  </div>
+  <div>
+    <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">Order</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Deadline</th>
+        <th class="text-center">Client</th>
+        <th class="text-center">Defect</th>
+        <th class="text-center">Type</th>
+        <th class="text-center">IMEI/SN</th>
+        <th class="text-center">Brand/Model</th>
+        <th class="text-center">Appearance/Complectation</th>
+        <th class="text-center">Password</th>
+        <th class="text-center">Total cost</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.id)">
+        <td class="text-center">
+          <div>#{{order.id}}</div>
+          <div class="small text-muted">{{order.orderDate}}</div>
+        </td>
+        <td class="text-center">
+          <div><span class="badge badge-warning"><strong>{{order.orderStatus}}</strong></span></div>
+        </td>
+        <td class="text-center">
+          <div><strong>{{order.orderDeadline}}</strong></div>
+        </td>
+        <td class="text-center">
+          <div>{{order.clientName}}</div>
+          <div class="small text-muted">{{order.clientPhone}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.deviceDefect}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.deviceType}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.deviceIMEISN}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.deviceBrand}}</div>
+          <div>{{order.deviceModel}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.deviceAppearance}}</div>
+          <div>{{order.deviceComplectation}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.devicePassword}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.orderTotalCost}}</div>
+        </td>
+<!--        <td>-->
+<!--          <button (click)="deleteOrder(order.id)" class="btn btn-danger">Delete</button>-->
+<!--          <button (click)="updateOrder(order.id)" class="btn btn-info" style="margin-left: 10px">Update</button>-->
+<!--          <button (click)="orderDetails(order.id)" class="btn btn-info" style="margin-left: 10px">Details</button>-->
+<!--        </td>-->
+      </tr>
+      <a routerLink="../add" class="addbutton" routerLinkActive="active"><strong>+</strong></a>
+      </tbody>
+    </table>
+  </div>
+</div>
+
