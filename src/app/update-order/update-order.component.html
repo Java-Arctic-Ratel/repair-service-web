@@ -1,0 +1,159 @@
+<h3>Update Order</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      <tr>
+        <td style="width: 20%; text-align: left;">
+          <h3><strong>New order</strong></h3>
+        </td>
+        <td style="width: 20%; text-align: center;">Status:<br/>
+          <select class="form-control" [(ngModel)]="order.orderStatus" name="orderStatus">
+            <option value="In work">In work</option>
+            <option value="Waiting for a spare part">Waiting for a spare part</option>
+            <option value="Ready">Ready</option>
+            <option value="Issued">Issued</option>
+          </select></td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" border="0">
+      <tbody>
+      <tr style="height: 21px;">
+        <td style="width: 50%; height: 21px;">
+          <table style="border-collapse: collapse; width: 98.8662%;" height="326" border="0">
+            <tbody>
+            <tr>
+              <td><strong>Client:</strong><br/>
+                <form>
+                  <p><input type="text" value="name*" [(ngModel)]="order.clientName" name="clientName"/><input
+                    type="text" value="surname*"/><input type="text" value="patronymic"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100%;">Phone number:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.clientPhone" name="clientPhone"></p>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Address:<br/>
+                <form>
+                  <p><input type="text" value="city"/><input type="text" value="street"/><input type="text"
+                                                                                                value="house number"/><input
+                    type="text" value="apartment number"/></p>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <br/>
+          <table style="border-collapse: collapse; width: 100%;" border="0">
+            <tbody>
+            <tr style="height: 55px;">
+              <td style="width: 100%; height: 55px;">
+                <p><strong>Additional information:</strong></p>
+                <p>Estimated cost</p>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.orderTotalCost" name="orderTotalCost"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 55px;">
+              <td style="width: 100%; height: 55px;">Deadline:<br/>
+                <form>
+                  <p><input type=Date [(ngModel)]="order.orderDeadline" name="orderDeadline"/></p>
+                </form>
+              </td>
+            </tr>
+
+            <tr style="height: 55px;">
+              <td style="width: 100%; height: 55px;">Executor:<br/>
+                <form><input type="text" value="executor"/></form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </td>
+        <td style="width: 50%; height: 21px;">
+          <table style="border-collapse: collapse; width: 99.5873%; height: 198px;" border="0">
+            <tbody>
+
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;"><strong>Device information</strong><br/><br/>Defect:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceDefect" name="deviceDefect"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Appearance:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceAppearance" name="deviceAppearance"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Device type:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceType" name="deviceType"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">imei / serial number:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceIMEISN" name="deviceIMEISN"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Brand:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceBrand" name="deviceBrand"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Model<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceModel" name="deviceModel"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Complectation:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.deviceComplectation" name="deviceComplectation"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Password<br/>
+                <form><input type="text" [(ngModel)]="order.devicePassword" name="devicePassword"/></form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      <div class="button-container" align="center">
+      </div>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      </tbody>
+    </table>
+    <div class="button-container" align="center">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
