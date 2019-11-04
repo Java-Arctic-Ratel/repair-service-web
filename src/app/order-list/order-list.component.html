@@ -24,40 +24,40 @@
       <tr *ngFor="let order of orders | async" (click)="orderDetails(order.id)">
         <td class="text-center">
           <div>#{{order.id}}</div>
-          <div class="small text-muted">{{order.orderDate}}</div>
+          <div class="small text-muted">{{order.ordersStartDate}}</div>
         </td>
         <td class="text-center">
-          <div><span class="badge badge-warning"><strong>{{order.orderStatus}}</strong></span></div>
+          <div><span class="badge badge-warning"><strong>{{order.status.statusName}}</strong></span></div>
         </td>
         <td class="text-center">
-          <div><strong>{{order.orderDeadline}}</strong></div>
+          <div><strong>{{order.ordersEndDate}}</strong></div>
         </td>
         <td class="text-center">
-          <div>{{order.clientName}}</div>
-          <div class="small text-muted">{{order.clientPhone}}</div>
+          <div>{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}</div>
+          <div class="small text-muted">{{order.client.clientPhoneNumber}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.deviceDefect}}</div>
+          <div>{{order.device.deviceCondition.defect.defectName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.deviceType}}</div>
+          <div>TYPE_NOTREADY</div>
         </td>
         <td class="text-center">
-          <div>{{order.deviceIMEISN}}</div>
+          <div>{{order.device.deviceIMEIOrSn}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.deviceBrand}}</div>
-          <div>{{order.deviceModel}}</div>
+          <div>{{order.device.brand.brandName}}</div>
+          <div>{{order.device.model.modelName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.deviceAppearance}}</div>
-          <div>{{order.deviceComplectation}}</div>
+          <div>{{order.device.deviceCondition.appearance.appearanceName}}</div>
+          <div>{{order.device.deviceCondition.complectation.complectationName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.devicePassword}}</div>
+          <div>{{order.device.devicePassword}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.orderTotalCost}}</div>
+          <div>{{order.ordersCostEstimated}}</div>
         </td>
         <!--        <td>-->
         <!--          <button (click)="deleteOrder(order.id)" class="btn btn-danger">Delete</button>-->

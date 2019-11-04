@@ -25,8 +25,8 @@ export class OrderListComponent implements OnInit {
     this.orders = this.orderService.getOrdersList();
   }
 
-  deleteOrder(id: number) {
-    this.orderService.deleteOrder(id)
+  deleteOrder(ordersId: number) {
+    this.orderService.deleteOrder(ordersId)
       .subscribe(
         data => {
           console.log(data);
@@ -35,15 +35,15 @@ export class OrderListComponent implements OnInit {
         error => console.log(error));
   }
 
-  orderDetails(id: number) {
-    this.router.navigate(['details', id]);
+  orderDetails(ordersId: number) {
+    this.router.navigate(['details', ordersId]);
   }
 
-  updateOrder(id: number) {
-    this.router.navigate(['update', id]);
+  updateOrder(ordersId: number) {
+    this.router.navigate(['update', ordersId]);
   }
 
-  createOrder(id: number) {
+  createOrder(ordersId: number) {
     this.orderService.createOrder(new Order());
   }
 }

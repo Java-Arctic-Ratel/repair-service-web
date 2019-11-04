@@ -1,28 +1,47 @@
-<h2>Order Details</h2>
+<h2>Order # {{order.id}}</h2>
 
 <hr/>
 <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
   <div class="row">
     <div class="col">
-      <div *ngIf="order">
-        <div><label><b>Order id: </b></label> #{{order.id}}</div>
-        <div><label><b>Order Date: </b></label>&nbsp;{{order.orderDate}}</div>
-        <div><label><b>Order Deadline: </b></label>&nbsp;{{order.orderDeadline}}</div>
+      <div>
+        <div><label><b>Order Date: </b></label>&nbsp;{{order.ordersStartDate}}</div>
+        <div><label><b>Order Deadline: </b></label>&nbsp;{{order.ordersEndDate}}</div>
+        <div><label><b>Order Issue Date: </b></label>&nbsp;{{order.ordersIssueDate}}</div>
+        <div><label><b>Estimated cost: </b></label>&nbsp;{{order.ordersCostEstimated}}</div>
         <br>
-        <div><label><b>Client's Name: </b></label>&nbsp;{{order.clientName}}</div>
-        <div><label><b>Client's Phone </b></label>&nbsp;{{order.clientPhone}}</div>
+        <div><label><b>Client's information:</b></label></div>
+        <div>
+          <label><b>Name:</b></label>&nbsp;{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}
+        </div>
+        <div><label><b>Phone number:</b></label>&nbsp;{{order.client.clientPhoneNumber}}</div>
+        <div><label><b>Address:</b></label>&nbsp;{{order.client.address.city.cityName}}
+          ,&nbsp;{{order.client.address.street.streetName}},&nbsp;
+          {{order.client.address.houseNumber}}-{{order.client.address.apartmentNumber}}</div>
         <br>
-        <div><label><b>Device Defect: </b></label>&nbsp;{{order.deviceDefect}}</div>
-        <div><label><b>Device Type: </b></label>&nbsp;{{order.deviceType}}</div>
-        <div><label><b>Device IMEI or SN: </b></label>&nbsp;{{order.deviceIMEISN}}</div>
-        <div><label><b>Device Brand: </b></label>&nbsp;{{order.deviceBrand}}</div>
-        <div><label><b>Device Model: </b></label>&nbsp;{{order.deviceModel}}</div>
-        <div><label><b>Device Appearance: </b></label>&nbsp;{{order.deviceAppearance}}</div>
-        <div><label><b>Device Complectation: </b></label>&nbsp;{{order.deviceComplectation}}</div>
-        <div><label><b>Device Password: </b></label>&nbsp;{{order.devicePassword}}</div>
+        <div><label><b>Device Defect: </b></label>&nbsp;{{order.device.deviceCondition.defect.defectName}}</div>
+        <div><label><b>Device Type: </b></label>&nbsp;TYPE_NOTREADY</div>
+        <div><label><b>Device IMEI or SN: </b></label>&nbsp;{{order.device.deviceIMEIOrSn}}</div>
+        <div><label><b>Device Brand: </b></label>&nbsp;{{order.device.brand.brandName}}</div>
+        <div><label><b>Device Model: </b></label>&nbsp;{{order.device.model.modelName}}</div>
+        <div><label><b>Device Appearance: </b></label>&nbsp;{{order.device.deviceCondition.appearance.appearanceName}}
+        </div>
+        <div><label><b>Device
+          Complectation: </b></label>&nbsp;{{order.device.deviceCondition.complectation.complectationName}}</div>
+        <div><label><b>Device Password: </b></label>&nbsp;{{order.device.devicePassword}}</div>
         <br>
-        <div><label><b>Order TotalCost: </b></label>&nbsp;{{order.orderTotalCost}}</div>
+        <div><label><b>Order
+          TotalCost: </b></label>&nbsp;{{order.executor.firstName.firstName}}&nbsp;{{order.executor.lastName.lastName}}&nbsp;{{order.executor.patronymic.patronymic}}
+        </div>
+        <br>
+        <div><label><b>Total Cost:</b></label></div>
+        <div><label><b>Spare
+          Parts:</b></label>&nbsp;{{order.spareParts.sparePartsName}}&nbsp;-&nbsp;{{order.spareParts.sparePartsCost}}&nbsp;BYN
+        </div>
+        <div><label><b>Work:</b></label>&nbsp;BYN</div>
+        <div><b><label>Order TotalCost: </label>&nbsp;{{order.ordersCostTotal}}</b></div>
       </div>
+
     </div>
   </div>
 </table>
