@@ -18,8 +18,6 @@ interface Client {
   firstName: FirstName;
   lastName: LastName;
   patronymic: Patronymic;
-  address: Address;
-
 }
 
 interface FirstName {
@@ -67,6 +65,10 @@ interface DeviceCondition {
   defect: Defect;
 }
 
+interface Type {
+  typeName: string;
+}
+
 interface Model {
   modelName: string;
 }
@@ -78,6 +80,7 @@ interface Brand {
 interface Device {
   deviceIMEIOrSn: string;
   devicePassword: string;
+  type?: Type;
   deviceCondition: DeviceCondition;
   model: Model;
   brand: Brand;

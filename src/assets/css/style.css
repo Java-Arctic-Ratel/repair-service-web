@@ -17463,19 +17463,15 @@ body {
 }
 
 .addbutton {
-  width: 100px;
-  border: none;
-  background: #4CAF50;
-  text-align: center;
+
+
   padding: 40px;
   position: fixed;
   bottom: 75px;
   right: 25px;
   cursor: pointer;
   color: white;
-  font-family: verdana;
-  font-size: 100%;
-  border-radius: 50%;
+
 
 }
 

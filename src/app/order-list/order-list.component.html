@@ -40,7 +40,7 @@
           <div>{{order.device.deviceCondition.defect.defectName}}</div>
         </td>
         <td class="text-center">
-          <div>TYPE_NOTREADY</div>
+          <div>{{order.device.type.typeName}}</div>
         </td>
         <td class="text-center">
           <div>{{order.device.deviceIMEIOrSn}}</div>
@@ -59,13 +59,12 @@
         <td class="text-center">
           <div>{{order.ordersCostEstimated}}</div>
         </td>
-        <!--        <td>-->
-        <!--          <button (click)="deleteOrder(order.id)" class="btn btn-danger">Delete</button>-->
-        <!--          <button (click)="updateOrder(order.id)" class="btn btn-info" style="margin-left: 10px">Update</button>-->
-        <!--          <button (click)="orderDetails(order.id)" class="btn btn-info" style="margin-left: 10px">Details</button>-->
-        <!--        </td>-->
       </tr>
-      <a routerLink="../add" class="addbutton" routerLinkActive="active"><strong>+</strong></a>
+      <div class="addbutton">
+        <a mat-fab routerLink="../add">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
       </tbody>
     </table>
   </div>
