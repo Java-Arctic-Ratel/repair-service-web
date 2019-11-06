@@ -1,0 +1,43 @@
+<header class="app-header navbar">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+       routerLink="orders"
+       [routerLinkActive] #rla="routerLinkActive"
+       [active]="rla.isActive">
+      List of orders
+    </a>
+    <a mat-tab-link
+       routerLink="add"
+       [routerLinkActive] #rla="routerLinkActive"
+       [active]="rla.isActive">
+      Add
+    </a>
+  </nav>
+</header>
+
+<main class="main">
+  <div class="container-fluid">
+    <br>
+    <div align="center" style="align-items: center">
+      <h2 style="text-align: center">{{title}}</h2>
+      <hr>
+    </div>
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <table class="mb-2 table">
+              <thead class="thead-dark">
+              <router-outlet></router-outlet>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer style="align-self: center">
+  <a href="#">EPAM.com</a>&nbsp;<span>&copy; 2019 Brest office</span>
+</footer>

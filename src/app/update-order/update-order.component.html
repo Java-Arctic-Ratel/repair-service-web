@@ -1,0 +1,187 @@
+<h3>Update Order</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      <tr>
+        <td style="width: 20%; text-align: left;">
+          <h3><strong>New order</strong></h3>
+        </td>
+        <td style="width: 20%; text-align: center;">Status:<br/>
+          <select class="form-control" [(ngModel)]="order.status.statusName" name="status.statusName">
+            <option value="In work">In work</option>
+            <option value="Waiting for a spare part">Waiting for a spare part</option>
+            <option value="Ready">Ready</option>
+            <option value="Issued">Issued</option>
+          </select>
+          <!--          <form class="example-form">-->
+          <!--            <mat-form-field class="example-full-width">-->
+          <!--              <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="order.status.statusName" [matAutocomplete]="auto">-->
+          <!--              <mat-autocomplete #auto="matAutocomplete">-->
+          <!--                <mat-option *ngFor="let statusName of order.status.statusName" [value]="statusName">-->
+          <!--                  {{order.status.statusName}}-->
+          <!--                </mat-option>-->
+          <!--              </mat-autocomplete>-->
+          <!--            </mat-form-field>-->
+          <!--          </form>-->
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" border="0">
+      <tbody>
+      <tr style="height: 21px;">
+        <td style="width: 50%; height: 21px;">
+          <table style="border-collapse: collapse; width: 98.8662%;" height="326" border="0">
+            <tbody>
+            <tr>
+              <td><strong>Client:</strong><br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.client.firstName.firstName"
+                            name="client.firstName.firstName"/>
+                    <input type="text" [(ngModel)]="order.client.lastName.lastName" name="client.lastName.lastName"/>
+                    <input type="text" [(ngModel)]="order.client.patronymic.patronymic"
+                           name="client.patronymic.patronymic"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100%;">Phone number:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.client.clientPhoneNumber" name="client.clientPhoneNumber">
+                  </p>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Address:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.client.address.city.cityName"
+                            name="client.address.city.cityName"/>
+                    <input type="text" [(ngModel)]="order.client.address.street.streetName"
+                           name="client.client.address.street.streetName"/>
+                    <input type="text" [(ngModel)]="order.client.address.houseNumber"
+                           name="client.address.houseNumber"/>
+                    <input type="text" [(ngModel)]="order.client.address.apartmentNumber"
+                           name="client.address.apartmentNumber"/></p>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <br/>
+          <table style="border-collapse: collapse; width: 100%;" border="0">
+            <tbody>
+            <tr style="height: 55px;">
+              <td style="width: 100%; height: 55px;">
+                <p><strong>Additional information:</strong></p>
+                <p>Estimated cost</p>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.ordersCostEstimated" name="ordersCostEstimated"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 55px;">
+              <td style="width: 100%; height: 55px;">Deadline:<br/>
+                <form>
+                  <p><input type=Date [(ngModel)]="order.ordersEndDate" name="ordersEndDate"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Executor:</strong><br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.executor.firstName.firstName"
+                            name="executor.firstName.firstName"/>
+                    <input type="text" [(ngModel)]="order.executor.lastName.lastName"
+                           name="executor.lastName.lastName"/>
+                    <input type="text" [(ngModel)]="order.executor.patronymic.patronymic"
+                           name="executor.patronymic.patronymic"/></p>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+        <td style="width: 50%; height: 21px;">
+          <table style="border-collapse: collapse; width: 99.5873%; height: 198px;" border="0">
+            <tbody>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;"><strong>Device information</strong><br/><br/>Defect:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.defect.defectName"
+                            name="device.deviceCondition.defect.defectName"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Appearance:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.appearance.appearanceName"
+                            name="device.deviceCondition.appearance.appearanceName"/></p>
+                </form>
+              </td>
+            </tr>
+            <!--            <tr style="height: 10px;">-->
+            <!--              <td style="width: 100%; height: 10px;">Device type:<br/>-->
+            <!--                <form>-->
+            <!--                  <p><input type="text" [(ngModel)]="order.device" name="deviceType"/></p>-->
+            <!--                </form>-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">imei / serial number:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.deviceIMEIOrSn" name="device.deviceIMEIOrSn"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Brand:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.brand.brandName" name="device.brand.brandName"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Model<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.model.modelName" name="device.model.modelName"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Complectation:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.complectation"
+                            name="device.deviceCondition.complectation"/></p>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Password<br/>
+                <form><input type="text" [(ngModel)]="order.device.devicePassword" name="device.devicePassword"/></form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      <div class="button-container" align="center">
+      </div>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
+      <tbody>
+      </tbody>
+    </table>
+    <div class="button-container" align="center">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>

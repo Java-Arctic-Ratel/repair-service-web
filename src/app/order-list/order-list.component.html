@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h2>Order List</h2>
+  </div>
+  <div>
+    <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">Order</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Deadline</th>
+        <th class="text-center">Client</th>
+        <th class="text-center">Defect</th>
+        <th class="text-center">Type</th>
+        <th class="text-center">IMEI/SN</th>
+        <th class="text-center">Brand/Model</th>
+        <th class="text-center">Appearance/Complectation</th>
+        <th class="text-center">Password</th>
+        <th class="text-center">Total cost</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.id)">
+        <td class="text-center">
+          <div>#{{order.id}}</div>
+          <div class="small text-muted">{{order.ordersStartDate}}</div>
+        </td>
+        <td class="text-center">
+          <div><span class="badge badge-warning"><strong>{{order.status.statusName}}</strong></span></div>
+        </td>
+        <td class="text-center">
+          <div><strong>{{order.ordersEndDate}}</strong></div>
+        </td>
+        <td class="text-center">
+          <div>{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}</div>
+          <div class="small text-muted">{{order.client.clientPhoneNumber}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.deviceCondition.defect.defectName}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.type.typeName}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.deviceIMEIOrSn}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.brand.brandName}}</div>
+          <div>{{order.device.model.modelName}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.deviceCondition.appearance.appearanceName}}</div>
+          <div>{{order.device.deviceCondition.complectation.complectationName}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.device.devicePassword}}</div>
+        </td>
+        <td class="text-center">
+          <div>{{order.ordersCostEstimated}}</div>
+
+        </td>
+      </tr>
+      <div class="addbutton">
+        <a mat-fab routerLink="../add">
+          <mat-icon>add</mat-icon>
+        </a>
+      </div>
+      </tbody>
+    </table>
+  </div>
+</div>
+
