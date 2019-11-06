@@ -1,5 +1,6 @@
-# web-application-for-repair-service
 [![Build Status](https://travis-ci.org/Java-Arctic-Ratel/repair-service-web.svg?branch=master)](https://travis-ci.org/Java-Arctic-Ratel/repair-service-web)
+
+# web-application-for-repair-service
 
 Recommended:
 node -v
