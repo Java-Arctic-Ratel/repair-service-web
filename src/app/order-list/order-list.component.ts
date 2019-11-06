@@ -27,6 +27,7 @@ export class OrderListComponent implements OnInit {
 
   deleteOrder(ordersId: number) {
     this.orderService.deleteOrder(ordersId)
+
       .subscribe(
         data => {
           console.log(data);
@@ -34,6 +35,7 @@ export class OrderListComponent implements OnInit {
         },
         error => console.log(error));
   }
+
 
   orderDetails(ordersId: number) {
     this.router.navigate(['details', ordersId]);
@@ -44,6 +46,7 @@ export class OrderListComponent implements OnInit {
   }
 
   createOrder(ordersId: number) {
+
     this.orderService.createOrder(new Order());
   }
 }
