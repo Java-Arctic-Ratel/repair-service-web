@@ -8,6 +8,7 @@ import {OrderService} from '../order.service';
   templateUrl: './create-order.component.html',
   styleUrls: ['./create-order.component.css']
 })
+
 export class CreateOrderComponent implements OnInit {
 
   order: Order = new Order();
@@ -20,12 +21,7 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  newOrder(): void {
-    this.submitted = false;
-    this.order = new Order();
-  }
-
-  save() {
+  saveOrder() {
     this.orderService.createOrder(this.order)
       .subscribe(data => console.log(data), error => console.log(error));
     this.order = new Order();
@@ -34,10 +30,10 @@ export class CreateOrderComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.save();
+    this.saveOrder();
   }
 
   gotoList() {
-    this.router.navigate(['/orders']);
+    this.router.navigate(['/order']);
   }
 }

@@ -21,17 +21,17 @@ export class UpdateOrderComponent implements OnInit {
   ngOnInit() {
     this.order = new Order();
 
-    this.id = this.route.snapshot.params.id;
+    this.id = this.route.snapshot.params['id'];
 
     this.orderService.getOrder(this.id)
       .subscribe(data => {
-        console.log(data)
+        console.log(data);
         this.order = data;
       }, error => console.log(error));
   }
 
   updateOrder() {
-    this.orderService.updateOrder(this.id, this.order)
+    this.orderService.updateOrder(this.order)
       .subscribe(data => console.log(data), error => console.log(error));
     this.order = new Order();
     this.gotoList();
@@ -42,6 +42,6 @@ export class UpdateOrderComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/orders']);
+    this.router.navigate(['/order']);
   }
 }

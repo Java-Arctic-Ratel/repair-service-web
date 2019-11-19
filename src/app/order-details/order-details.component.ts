@@ -1,8 +1,6 @@
 import {Order} from '../order';
 import {Component, OnInit, Input} from '@angular/core';
 import {OrderService} from '../order.service';
-import {UpdateOrderComponent} from '../update-order/update-order.component';
-import {OrderListComponent} from '../order-list/order-list.component';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -21,9 +19,7 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.order = new Order();
-
     this.id = this.route.snapshot.params.id;
-
     this.orderService.getOrder(this.id)
       .subscribe(data => {
         console.log(data);
@@ -32,10 +28,20 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   list() {
-    this.router.navigate(['orders']);
+    this.router.navigate(['order']);
   }
 
   updateOrder(id: number) {
     this.router.navigate(['update', id]);
   }
+
+  deleteOrder(id: number) {
+    this.orderService.deleteOrder(id)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log(error));
+  }
+
 }

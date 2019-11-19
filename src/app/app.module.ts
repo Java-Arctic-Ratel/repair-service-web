@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CreateOrderComponent} from './create-order/create-order.component';
@@ -9,11 +9,7 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UpdateOrderComponent} from './update-order/update-order.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,15 +25,11 @@ import {MatButtonModule} from "@angular/material/button";
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatButtonModule
+    FontAwesomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AppComponent],
 })
 export class AppModule {
 }

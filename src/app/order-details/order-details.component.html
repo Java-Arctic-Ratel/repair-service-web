@@ -1,52 +1,50 @@
-<h2>Order # {{order.id}}</h2>
+<h2>Order # {{order.repairOrderId}}&nbsp;-&nbsp;{{order.repairOrderStartDate}}</h2>
+<h3>Status&nbsp;{{order.status.statusName}}</h3>
 
 <hr/>
 <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
   <div class="row">
     <div class="col">
       <div>
-        <div><label><b>Order Date: </b></label>&nbsp;{{order.ordersStartDate}}</div>
-        <div><label><b>Order Deadline: </b></label>&nbsp;{{order.ordersEndDate}}</div>
-        <div><label><b>Order Issue Date: </b></label>&nbsp;{{order.ordersIssueDate}}</div>
-        <div><label><b>Estimated cost: </b></label>&nbsp;{{order.ordersCostEstimated}}</div>
+        <div><label><b>Order Deadline: </b></label>&nbsp;{{order.repairOrderEndDate}}</div>
+        <div><label><b>Order Issue Date: </b></label>&nbsp;{{order.repairOrderIssueDate}}</div>
+        <div><label><b>Estimated cost: </b></label>&nbsp;{{order.repairOrderCostEstimated}}</div>
         <br>
         <div><label><b>Client's information:</b></label></div>
         <div>
-          <label><b>Name:</b></label>&nbsp;{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}
+          <label><b>Name:</b></label>&nbsp;{{order.client.firstName}}&nbsp;{{order.client.lastName}}
         </div>
         <div><label><b>Phone number:</b></label>&nbsp;{{order.client.clientPhoneNumber}}</div>
-        <div><label><b>Address:</b></label>&nbsp;{{order.client.address.city.cityName}}
-          ,&nbsp;{{order.client.address.street.streetName}},&nbsp;
-          {{order.client.address.houseNumber}}-{{order.client.address.apartmentNumber}}</div>
+        <div><label><b>Address:</b></label>&nbsp;{{order.client.address.city.cityName}},
+          &nbsp;{{order.client.address.street.streetName}},
+          &nbsp;{{order.client.address.houseNumber}}-{{order.client.address.apartmentNumber}}</div>
         <br>
-        <div><label><b>Device Defect: </b></label>&nbsp;{{order.device.deviceCondition.defect.defectName}}</div>
-        <div><label><b>Device Type: </b></label>&nbsp;TYPE_NOTREADY</div>
+        <div><label><b>Device Defect: </b></label>&nbsp;{{order.device.defect.defectName}}</div>
+        <div><label><b>Device Type: </b></label>&nbsp;{{order.device.type.typeName}}</div>
         <div><label><b>Device IMEI or SN: </b></label>&nbsp;{{order.device.deviceIMEIOrSn}}</div>
         <div><label><b>Device Brand: </b></label>&nbsp;{{order.device.brand.brandName}}</div>
         <div><label><b>Device Model: </b></label>&nbsp;{{order.device.model.modelName}}</div>
-        <div><label><b>Device Appearance: </b></label>&nbsp;{{order.device.deviceCondition.appearance.appearanceName}}
+        <div><label><b>Device Appearance: </b></label>&nbsp;{{order.device.appearance.appearanceName}}
         </div>
         <div><label><b>Device
-          Complectation: </b></label>&nbsp;{{order.device.deviceCondition.complectation.complectationName}}</div>
+          Complectation: </b></label>&nbsp;{{order.device.complectation.complectationName}}</div>
         <div><label><b>Device Password: </b></label>&nbsp;{{order.device.devicePassword}}</div>
         <br>
         <div><label><b>Order
-          TotalCost: </b></label>&nbsp;{{order.executor.firstName.firstName}}&nbsp;{{order.executor.lastName.lastName}}&nbsp;{{order.executor.patronymic.patronymic}}
+          TotalCost: </b></label>&nbsp;{{order.employee.firstName}}&nbsp;{{order.employee.lastName}}&nbsp;-&nbsp;{{order.employee.employeeType.employeeTypeName}}
         </div>
         <br>
-        <div><label><b>Total Cost:</b></label></div>
         <div><label><b>Spare
-          Parts:</b></label>&nbsp;{{order.spareParts.sparePartsName}}&nbsp;-&nbsp;{{order.spareParts.sparePartsCost}}&nbsp;BYN
+          Parts:</b></label>&nbsp;{{order.sparePart.sparePartName}}&nbsp;-&nbsp;{{order.sparePart.sparePartCost}}&nbsp;BYN
         </div>
-        <div><label><b>Work:</b></label>&nbsp;BYN</div>
-        <div><b><label>Order TotalCost: </label>&nbsp;{{order.ordersCostTotal}}</b></div>
+        <div><b><label>Order TotalCost: </label>&nbsp;{{order.repairOrderCostTotal}}</b></div>
       </div>
     </div>
   </div>
 </table>
-<br>
-<br>
-<button (click)="updateOrder(order.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
-<button (click)="list()" class="btn btn-primary">Back to Order List</button><br>
+<button (click)="updateOrder(order.repairOrderId)" class="btn btn-info">Update</button>
+<button (click)="deleteOrder(order.repairOrderId)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+
+
 
 

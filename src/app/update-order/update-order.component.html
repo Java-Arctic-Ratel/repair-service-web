@@ -1,30 +1,11 @@
-<h3>Update Order</h3>
+<h3>Update Order #{{order.repairOrderId}}</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
       <tbody>
       <tr>
-        <td style="width: 20%; text-align: left;">
-          <h3><strong>New order</strong></h3>
-        </td>
         <td style="width: 20%; text-align: center;">Status:<br/>
-          <select class="form-control" [(ngModel)]="order.status.statusName" name="status.statusName">
-            <option value="In work">In work</option>
-            <option value="Waiting for a spare part">Waiting for a spare part</option>
-            <option value="Ready">Ready</option>
-            <option value="Issued">Issued</option>
-          </select>
-          <!--          <form class="example-form">-->
-          <!--            <mat-form-field class="example-full-width">-->
-          <!--              <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="order.status.statusName" [matAutocomplete]="auto">-->
-          <!--              <mat-autocomplete #auto="matAutocomplete">-->
-          <!--                <mat-option *ngFor="let statusName of order.status.statusName" [value]="statusName">-->
-          <!--                  {{order.status.statusName}}-->
-          <!--                </mat-option>-->
-          <!--              </mat-autocomplete>-->
-          <!--            </mat-form-field>-->
-          <!--          </form>-->
-
+          <input class="form-control" [(ngModel)]="order.status.statusName" name="status.statusName"/>
         </td>
       </tr>
       </tbody>
@@ -38,11 +19,9 @@
             <tr>
               <td><strong>Client:</strong><br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.client.firstName.firstName"
-                            name="client.firstName.firstName"/>
-                    <input type="text" [(ngModel)]="order.client.lastName.lastName" name="client.lastName.lastName"/>
-                    <input type="text" [(ngModel)]="order.client.patronymic.patronymic"
-                           name="client.patronymic.patronymic"/></p>
+                  <p><input type="text" [(ngModel)]="order.client.firstName" name="client.firstName"/>
+                    <input type="text" [(ngModel)]="order.client.lastName" name="client.lastName"/>
+                  </p>
                 </form>
               </td>
             </tr>
@@ -78,26 +57,28 @@
                 <p><strong>Additional information:</strong></p>
                 <p>Estimated cost</p>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.ordersCostEstimated" name="ordersCostEstimated"/></p>
+                  <p><input type="text" [(ngModel)]="order.repairOrderCostEstimated" name="repairOrderCostEstimated"/>
+                  </p>
                 </form>
               </td>
             </tr>
             <tr style="height: 55px;">
               <td style="width: 100%; height: 55px;">Deadline:<br/>
                 <form>
-                  <p><input type=Date [(ngModel)]="order.ordersEndDate" name="ordersEndDate"/></p>
+                  <p><input type=Date [(ngModel)]="order.repairOrderEndDate" name="repairOrderEndDate"/></p>
                 </form>
               </td>
             </tr>
             <tr>
-              <td><strong>Executor:</strong><br/>
+              <td><strong>Employee:</strong><br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.executor.firstName.firstName"
-                            name="executor.firstName.firstName"/>
-                    <input type="text" [(ngModel)]="order.executor.lastName.lastName"
-                           name="executor.lastName.lastName"/>
-                    <input type="text" [(ngModel)]="order.executor.patronymic.patronymic"
-                           name="executor.patronymic.patronymic"/></p>
+                  <p><input type="text" [(ngModel)]="order.employee.firstName"
+                            name="employee.firstName"/>
+                    <input type="text" [(ngModel)]="order.employee.lastName"
+                           name="employee.lastName"/>
+                    <input type="text" [(ngModel)]="order.employee.employeeType.employeeTypeName"
+                           name="employee.employeeType.employeeTypeName"/>
+                  </p>
                 </form>
               </td>
             </tr>
@@ -110,26 +91,26 @@
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;"><strong>Device information</strong><br/><br/>Defect:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.defect.defectName"
-                            name="device.deviceCondition.defect.defectName"/></p>
+                  <p><input type="text" [(ngModel)]="order.device.defect.defectName"
+                            name="device.defect.defectName"/></p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Appearance:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.appearance.appearanceName"
-                            name="device.deviceCondition.appearance.appearanceName"/></p>
+                  <p><input type="text" [(ngModel)]="order.device.appearance.appearanceName"
+                            name="device.appearance.appearanceName"/></p>
                 </form>
               </td>
             </tr>
-            <!--            <tr style="height: 10px;">-->
-            <!--              <td style="width: 100%; height: 10px;">Device type:<br/>-->
-            <!--                <form>-->
-            <!--                  <p><input type="text" [(ngModel)]="order.device" name="deviceType"/></p>-->
-            <!--                </form>-->
-            <!--              </td>-->
-            <!--            </tr>-->
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Device type:<br/>
+                <form>
+                  <p><input type="text" [(ngModel)]="order.device.type.typeName" name="device.type.typeName"/></p>
+                </form>
+              </td>
+            </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">imei / serial number:<br/>
                 <form>
@@ -154,14 +135,31 @@
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Complectation:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.deviceCondition.complectation"
-                            name="device.deviceCondition.complectation"/></p>
+                  <p><input type="text" [(ngModel)]="order.device.complectation.complectationName"
+                            name="device.complectation.complectationName"/></p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Password<br/>
                 <form><input type="text" [(ngModel)]="order.device.devicePassword" name="device.devicePassword"/></form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Spare Parts<br/>
+                <form><input type="text" [(ngModel)]="order.sparePart.sparePartName" name="sparePart.sparePartName"/>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Cost<br/>
+                <form><input type="text" [(ngModel)]="order.sparePart.sparePartCost" name="sparePart.sparePartCost"/>
+                </form>
+              </td>
+            </tr>
+            <tr style="height: 10px;">
+              <td style="width: 100%; height: 10px;">Total Cost<br/>
+                <form><input type="text" [(ngModel)]="order.repairOrderCostTotal" name="repairOrderCostTotal"/></form>
               </td>
             </tr>
             </tbody>

@@ -4,6 +4,7 @@ import {OrderService} from '../order.service';
 import {Order} from './../order';
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-order-list',
@@ -12,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class OrderListComponent implements OnInit {
   orders: Observable<Order[]>;
+  faPlusCircle = faPlusCircle;
 
   constructor(private orderService: OrderService,
               private router: Router) {
@@ -25,28 +27,7 @@ export class OrderListComponent implements OnInit {
     this.orders = this.orderService.getOrdersList();
   }
 
-  deleteOrder(ordersId: number) {
-    this.orderService.deleteOrder(ordersId)
-
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
-  }
-
-
   orderDetails(ordersId: number) {
     this.router.navigate(['details', ordersId]);
-  }
-
-  updateOrder(ordersId: number) {
-    this.router.navigate(['update', ordersId]);
-  }
-
-  createOrder(ordersId: number) {
-
-    this.orderService.createOrder(new Order());
   }
 }

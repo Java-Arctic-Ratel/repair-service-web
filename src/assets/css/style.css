@@ -17463,16 +17463,22 @@ body {
 }
 
 .addbutton {
-
-
   padding: 40px;
   position: fixed;
-  bottom: 75px;
+  bottom: 55px;
   right: 25px;
   cursor: pointer;
   color: white;
-
-
 }
 
+.greenIcon {
+  color: green;
+}
+
+.maintable-border {
+  background-color: #f1f1f1;
+  padding: .01em 16px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12) !important
+}
 /*# sourceMappingURL=style.css.map */

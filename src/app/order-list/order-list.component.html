@@ -1,9 +1,9 @@
-<div>
-  <div>
+<div class="panel panel-default">
+  <div class="panel-heading">
     <h2>Order List</h2>
   </div>
-  <div>
-    <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
+  <div class="panel-body">
+    <table class="table table-striped">
       <thead>
       <tr>
         <th class="text-center">Order</th>
@@ -21,23 +21,23 @@
       </thead>
       <tbody>
 
-      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.id)">
+      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.repairOrderId)">
         <td class="text-center">
-          <div>#{{order.id}}</div>
-          <div class="small text-muted">{{order.ordersStartDate}}</div>
+          <div>#{{order.repairOrderId}}</div>
+          <div class="small text-muted">{{order.repairOrderStartDate}}</div>
         </td>
         <td class="text-center">
           <div><span class="badge badge-warning"><strong>{{order.status.statusName}}</strong></span></div>
         </td>
         <td class="text-center">
-          <div><strong>{{order.ordersEndDate}}</strong></div>
+          <div><strong>{{order.repairOrderEndDate}}</strong></div>
         </td>
         <td class="text-center">
-          <div>{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}</div>
+          <div>{{order.client.firstName}}&nbsp;{{order.client.lastName}}</div>
           <div class="small text-muted">{{order.client.clientPhoneNumber}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceCondition.defect.defectName}}</div>
+          <div>{{order.device.defect.defectName}}</div>
         </td>
         <td class="text-center">
           <div>{{order.device.type.typeName}}</div>
@@ -50,24 +50,25 @@
           <div>{{order.device.model.modelName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceCondition.appearance.appearanceName}}</div>
-          <div>{{order.device.deviceCondition.complectation.complectationName}}</div>
+          <div>{{order.device.appearance.appearanceName}}</div>
+          <div>{{order.device.complectation.complectationName}}</div>
         </td>
         <td class="text-center">
           <div>{{order.device.devicePassword}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.ordersCostEstimated}}</div>
+          <div>{{order.repairOrderCostEstimated}}</div>
 
         </td>
       </tr>
       <div class="addbutton">
-        <a mat-fab routerLink="../add">
-          <mat-icon>add</mat-icon>
+        <a routerLink="../add">
+          <fa-icon class="greenIcon" [icon]="faPlusCircle" size="5x"></fa-icon>
         </a>
       </div>
       </tbody>
     </table>
   </div>
+  <div class="panel-footer">Pagination Panel</div>
 </div>
 

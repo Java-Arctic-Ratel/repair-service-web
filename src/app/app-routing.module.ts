@@ -6,8 +6,8 @@ import {OrderListComponent} from './order-list/order-list.component';
 import {UpdateOrderComponent} from './update-order/update-order.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'orders', pathMatch: 'full'},
-  {path: 'orders', component: OrderListComponent},
+  {path: '', redirectTo: 'order', pathMatch: 'full'},
+  {path: 'order', component: OrderListComponent},
   {path: 'add', component: CreateOrderComponent},
   {path: 'update/:id', component: UpdateOrderComponent},
   {path: 'details/:id', component: OrderDetailsComponent},

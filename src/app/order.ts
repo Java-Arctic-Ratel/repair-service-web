@@ -1,113 +1,89 @@
 export class Order {
-  id: number;
-  ordersStartDate: Date;
-  ordersEndDate: Date;
-  ordersCostEstimated: number;
-  ordersIssueDate: Date;
-  ordersCostTotal: number;
-  device: Device;
-  status: Status;
-  client: Client;
-  executor: Executor;
-  spareParts: SpareParts;
+  repairOrderId?: number;
+  repairOrderStartDate?: string;
+  repairOrderEndDate?: string;
+  repairOrderIssueDate?: string;
+  repairOrderCostEstimated?: object;
+  repairOrderCostTotal?: number;
+  client?: Client;
+  device?: Device;
+  employee?: Employee;
+  sparePart?: SparePart;
+  status?: Status;
 }
 
-interface Client {
-  clientPhoneNumber: string;
-  firstName: FirstName;
-  lastName: LastName;
-  patronymic: Patronymic;
+export interface City {
+  cityName?: string;
 }
 
-interface FirstName {
-  firstName: string;
+export interface Street {
+  streetName?: string;
 }
 
-interface LastName {
-  lastName: string;
+export interface Address {
+  houseNumber?: string;
+  apartmentNumber?: string;
+  city?: City;
+  street?: Street;
 }
 
-interface Patronymic {
-  patronymic: string;
+export interface Client {
+  clientPhoneNumber?: string;
+  firstName?: string;
+  lastName?: string;
+  address?: Address;
 }
 
-interface City {
-  cityName: string;
+export interface Type {
+  typeName?: string;
 }
 
-interface Street {
-  streetName: string;
+export interface Model {
+  modelName?: string;
 }
 
-interface Address {
-  houseNumber: string;
-  apartmentNumber: string;
-  city: City;
-  street: Street;
+export interface Brand {
+  brandName?: string;
 }
 
-interface Appearance {
-  appearanceName: string;
+export interface Appearance {
+  appearanceName?: string;
 }
 
-interface Complectation {
-  complectationName: string;
+export interface Complectation {
+  complectationName?: string;
 }
 
-interface Defect {
-  defectName: string;
+export interface Defect {
+  defectName?: string;
 }
 
-interface DeviceCondition {
-  appearance: Appearance;
-  complectation: Complectation;
-  defect: Defect;
-}
-
-interface Type {
-  typeName: string;
-}
-
-interface Model {
-  modelName: string;
-}
-
-interface Brand {
-  brandName: string;
-}
-
-interface Device {
-  deviceIMEIOrSn: string;
-  devicePassword: string;
+export interface Device {
+  deviceIMEIOrSn?: string;
+  devicePassword?: string;
   type?: Type;
-  deviceCondition: DeviceCondition;
-  model: Model;
-  brand: Brand;
+  model?: Model;
+  brand?: Brand;
+  appearance?: Appearance;
+  complectation?: Complectation;
+  defect?: Defect;
 }
 
-interface SpareParts {
-  sparePartsName: string;
-  sparePartsCost: number;
+export interface EmployeeType {
+  employeeTypeName?: string;
 }
 
-interface Executor {
-  firstName: FirstName1;
-  lastName: LastName1;
-  patronymic: Patronymic1;
+export interface Employee {
+  firstName?: string;
+  lastName?: string;
+  employeeType?: EmployeeType;
 }
 
-interface FirstName1 {
-  firstName: string;
+export interface SparePart {
+  sparePartName?: string;
+  sparePartCost?: number;
 }
 
-interface LastName1 {
-  lastName: string;
-}
-
-interface Patronymic1 {
-  patronymic: string;
-}
-
-interface Status {
-  statusName: string;
+export interface Status {
+  statusName?: string;
 }

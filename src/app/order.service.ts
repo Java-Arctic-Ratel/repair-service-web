@@ -7,25 +7,25 @@ import {Observable} from 'rxjs';
 })
 export class OrderService {
 
-  private baseUrl = 'http://localhost:3000/orders';
+  private baseUrl = 'http://localhost:8090/order';
 
   constructor(private http: HttpClient) {
   }
 
-  getOrder(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getOrder(repairOrderId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${repairOrderId}`);
   }
 
   createOrder(order: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, order);
   }
 
-  updateOrder(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+  updateOrder(value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}`, value);
   }
 
-  deleteOrder(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
+  deleteOrder(repairOrderId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${repairOrderId}`, {responseType: 'text'});
   }
 
   getOrdersList(): Observable<any> {
