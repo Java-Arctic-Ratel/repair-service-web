@@ -1,4 +1,4 @@
-<h2>Order # {{order.repairOrderId}}&nbsp;-&nbsp;{{order.repairOrderStartDate}}</h2>
+<h2>RepairOrder # {{order.repairOrderId}}&nbsp;-&nbsp;{{order.repairOrderStartDate}}</h2>
 <h3>Status&nbsp;{{order.status.statusName}}</h3>
 
 <hr/>
@@ -6,8 +6,8 @@
   <div class="row">
     <div class="col">
       <div>
-        <div><label><b>Order Deadline: </b></label>&nbsp;{{order.repairOrderEndDate}}</div>
-        <div><label><b>Order Issue Date: </b></label>&nbsp;{{order.repairOrderIssueDate}}</div>
+        <div><label><b>RepairOrder Deadline: </b></label>&nbsp;{{order.repairOrderEndDate}}</div>
+        <div><label><b>RepairOrder Issue Date: </b></label>&nbsp;{{order.repairOrderIssueDate}}</div>
         <div><label><b>Estimated cost: </b></label>&nbsp;{{order.repairOrderCostEstimated}}</div>
         <br>
         <div><label><b>Client's information:</b></label></div>
@@ -30,14 +30,14 @@
           Complectation: </b></label>&nbsp;{{order.device.complectation.complectationName}}</div>
         <div><label><b>Device Password: </b></label>&nbsp;{{order.device.devicePassword}}</div>
         <br>
-        <div><label><b>Order
+        <div><label><b>RepairOrder
           TotalCost: </b></label>&nbsp;{{order.employee.firstName}}&nbsp;{{order.employee.lastName}}&nbsp;-&nbsp;{{order.employee.employeeType.employeeTypeName}}
         </div>
         <br>
         <div><label><b>Spare
           Parts:</b></label>&nbsp;{{order.sparePart.sparePartName}}&nbsp;-&nbsp;{{order.sparePart.sparePartCost}}&nbsp;BYN
         </div>
-        <div><b><label>Order TotalCost: </label>&nbsp;{{order.repairOrderCostTotal}}</b></div>
+        <div><b><label>RepairOrder TotalCost: </label>&nbsp;{{order.repairOrderCostTotal}}</b></div>
       </div>
     </div>
   </div>

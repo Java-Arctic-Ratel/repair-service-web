@@ -1,11 +1,11 @@
-<h3>Update Order #{{order.repairOrderId}}</h3>
+<h3>Update RepairOrder #{{repairOrder.repairOrderId}}</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <table style="border-collapse: collapse; width: 100%;" height="40" border="0">
       <tbody>
       <tr>
         <td style="width: 20%; text-align: center;">Status:<br/>
-          <input class="form-control" [(ngModel)]="order.status.statusName" name="status.statusName"/>
+          <input class="form-control" [(ngModel)]="repairOrder.status.statusName" name="status.statusName"/>
         </td>
       </tr>
       </tbody>
@@ -19,8 +19,8 @@
             <tr>
               <td><strong>Client:</strong><br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.client.firstName" name="client.firstName"/>
-                    <input type="text" [(ngModel)]="order.client.lastName" name="client.lastName"/>
+                  <p><input type="text" [(ngModel)]="repairOrder.client.firstName" name="client.firstName"/>
+                    <input type="text" [(ngModel)]="repairOrder.client.lastName" name="client.lastName"/>
                   </p>
                 </form>
               </td>
@@ -28,7 +28,8 @@
             <tr>
               <td style="width: 100%;">Phone number:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.client.clientPhoneNumber" name="client.clientPhoneNumber">
+                  <p><input type="text" [(ngModel)]="repairOrder.client.clientPhoneNumber"
+                            name="client.clientPhoneNumber">
                   </p>
                 </form>
               </td>
@@ -36,13 +37,13 @@
             <tr>
               <td>Address:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.client.address.city.cityName"
+                  <p><input type="text" [(ngModel)]="repairOrder.client.address.city.cityName"
                             name="client.address.city.cityName"/>
-                    <input type="text" [(ngModel)]="order.client.address.street.streetName"
+                    <input type="text" [(ngModel)]="repairOrder.client.address.street.streetName"
                            name="client.client.address.street.streetName"/>
-                    <input type="text" [(ngModel)]="order.client.address.houseNumber"
+                    <input type="text" [(ngModel)]="repairOrder.client.address.houseNumber"
                            name="client.address.houseNumber"/>
-                    <input type="text" [(ngModel)]="order.client.address.apartmentNumber"
+                    <input type="text" [(ngModel)]="repairOrder.client.address.apartmentNumber"
                            name="client.address.apartmentNumber"/></p>
                 </form>
               </td>
@@ -57,7 +58,8 @@
                 <p><strong>Additional information:</strong></p>
                 <p>Estimated cost</p>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.repairOrderCostEstimated" name="repairOrderCostEstimated"/>
+                  <p><input type="text" [(ngModel)]="repairOrder.repairOrderCostEstimated"
+                            name="repairOrderCostEstimated"/>
                   </p>
                 </form>
               </td>
@@ -65,18 +67,18 @@
             <tr style="height: 55px;">
               <td style="width: 100%; height: 55px;">Deadline:<br/>
                 <form>
-                  <p><input type=Date [(ngModel)]="order.repairOrderEndDate" name="repairOrderEndDate"/></p>
+                  <p><input type=Date [(ngModel)]="repairOrder.repairOrderEndDate" name="repairOrderEndDate"/></p>
                 </form>
               </td>
             </tr>
             <tr>
               <td><strong>Employee:</strong><br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.employee.firstName"
+                  <p><input type="text" [(ngModel)]="repairOrder.employee.firstName"
                             name="employee.firstName"/>
-                    <input type="text" [(ngModel)]="order.employee.lastName"
+                    <input type="text" [(ngModel)]="repairOrder.employee.lastName"
                            name="employee.lastName"/>
-                    <input type="text" [(ngModel)]="order.employee.employeeType.employeeTypeName"
+                    <input type="text" [(ngModel)]="repairOrder.employee.employeeType.employeeTypeName"
                            name="employee.employeeType.employeeTypeName"/>
                   </p>
                 </form>
@@ -91,7 +93,7 @@
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;"><strong>Device information</strong><br/><br/>Defect:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.defect.defectName"
+                  <p><input type="text" [(ngModel)]="repairOrder.device.defect.defectName"
                             name="device.defect.defectName"/></p>
                 </form>
               </td>
@@ -99,7 +101,7 @@
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Appearance:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.appearance.appearanceName"
+                  <p><input type="text" [(ngModel)]="repairOrder.device.appearance.appearanceName"
                             name="device.appearance.appearanceName"/></p>
                 </form>
               </td>
@@ -107,59 +109,66 @@
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Device type:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.type.typeName" name="device.type.typeName"/></p>
+                  <p><input type="text" [(ngModel)]="repairOrder.device.type.typeName" name="device.type.typeName"/></p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">imei / serial number:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.deviceIMEIOrSn" name="device.deviceIMEIOrSn"/></p>
+                  <p><input type="text" [(ngModel)]="repairOrder.device.deviceIMEIOrSn" name="device.deviceIMEIOrSn"/>
+                  </p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Brand:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.brand.brandName" name="device.brand.brandName"/></p>
+                  <p><input type="text" [(ngModel)]="repairOrder.device.brand.brandName" name="device.brand.brandName"/>
+                  </p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Model<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.model.modelName" name="device.model.modelName"/></p>
+                  <p><input type="text" [(ngModel)]="repairOrder.device.model.modelName" name="device.model.modelName"/>
+                  </p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Complectation:<br/>
                 <form>
-                  <p><input type="text" [(ngModel)]="order.device.complectation.complectationName"
+                  <p><input type="text" [(ngModel)]="repairOrder.device.complectation.complectationName"
                             name="device.complectation.complectationName"/></p>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Password<br/>
-                <form><input type="text" [(ngModel)]="order.device.devicePassword" name="device.devicePassword"/></form>
+                <form><input type="text" [(ngModel)]="repairOrder.device.devicePassword" name="device.devicePassword"/>
+                </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Spare Parts<br/>
-                <form><input type="text" [(ngModel)]="order.sparePart.sparePartName" name="sparePart.sparePartName"/>
+                <form><input type="text" [(ngModel)]="repairOrder.sparePart.sparePartName"
+                             name="sparePart.sparePartName"/>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Cost<br/>
-                <form><input type="text" [(ngModel)]="order.sparePart.sparePartCost" name="sparePart.sparePartCost"/>
+                <form><input type="text" [(ngModel)]="repairOrder.sparePart.sparePartCost"
+                             name="sparePart.sparePartCost"/>
                 </form>
               </td>
             </tr>
             <tr style="height: 10px;">
               <td style="width: 100%; height: 10px;">Total Cost<br/>
-                <form><input type="text" [(ngModel)]="order.repairOrderCostTotal" name="repairOrderCostTotal"/></form>
+                <form><input type="text" [(ngModel)]="repairOrder.repairOrderCostTotal" name="repairOrderCostTotal"/>
+                </form>
               </td>
             </tr>
             </tbody>

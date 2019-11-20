@@ -1,4 +1,4 @@
-import {Order} from '../order';
+import {RepairOrder} from '../model/repairOrder';
 import {Component, OnInit, Input} from '@angular/core';
 import {OrderService} from '../order.service';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -11,14 +11,14 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class OrderDetailsComponent implements OnInit {
 
   id: number;
-  order: Order;
+  order: RepairOrder;
 
   constructor(private route: ActivatedRoute, private router: Router,
               private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.order = new Order();
+    this.order = new RepairOrder();
     this.id = this.route.snapshot.params.id;
     this.orderService.getOrder(this.id)
       .subscribe(data => {

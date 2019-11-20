@@ -1,7 +1,7 @@
 import {OrderDetailsComponent} from './../order-details/order-details.component';
 import {Observable} from 'rxjs';
 import {OrderService} from '../order.service';
-import {Order} from './../order';
+import {RepairOrder} from '../model/repairOrder';
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Observable<Order[]>;
+  orders: Observable<RepairOrder[]>;
   faPlusCircle = faPlusCircle;
 
   constructor(private orderService: OrderService,

@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2>Order List</h2>
+    <h2>RepairOrder List</h2>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
       <thead>
       <tr>
-        <th class="text-center">Order</th>
+        <th class="text-center">RepairOrder</th>
         <th class="text-center">Status</th>
         <th class="text-center">Deadline</th>
         <th class="text-center">Client</th>
@@ -58,9 +58,9 @@
         </td>
         <td class="text-center">
           <div>{{order.repairOrderCostEstimated}}</div>
-
         </td>
       </tr>
+
       <div class="addbutton">
         <a routerLink="../add">
           <fa-icon class="greenIcon" [icon]="faPlusCircle" size="5x"></fa-icon>
@@ -69,6 +69,8 @@
       </tbody>
     </table>
   </div>
-  <div class="panel-footer">Pagination Panel</div>
+  <div class="panel-footer">
+    pagination panel
+  </div>
 </div>
 
