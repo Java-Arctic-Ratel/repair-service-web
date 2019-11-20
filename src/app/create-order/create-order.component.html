@@ -1,136 +1,206 @@
 <h3>Create RepairOrder</h3>
-<div [hidden]="submitted" style="width: 400px;">
+<br>
+<div [hidden]="submitted" style="width:100%">
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label>repairOrderStartDate<input type=Date class="form-control" [(ngModel)]="repairOrder.repairOrderStartDate"
-                                        name="repairOrder.repairOrderStartDate"></label>
-    </div>
-    <div class="form-group">
-      <label>repairOrderEndDate<input type=Date class="form-control" [(ngModel)]="repairOrder.repairOrderEndDate"
-                                      name="repairOrder.repairOrderEndDate"></label>
-    </div>
-    <div class="form-group">
-      <label>repairOrderIssueDate<input type=Date class="form-control" [(ngModel)]="repairOrder.repairOrderIssueDate"
-                                        name="repairOrder.repairOrderIssueDate"></label>
-    </div>
-    <div class="form-group">
-      <label>repairOrderCostEstimated<input type="text" class="form-control"
-                                            [(ngModel)]="repairOrder.repairOrderCostEstimated"
-                                            name="repairOrder.repairOrderCostEstimated"></label>
-    </div>
-    <div class="form-group">
-      <label>repairOrderCostTotal<input type="text" class="form-control" [(ngModel)]="repairOrder.repairOrderCostTotal"
-                                        name="repairOrder.repairOrderCostTotal"></label>
-    </div>
 
-    <div class="form-group">
-      <label>clientPhoneNumber<input type="text" class="form-control" [(ngModel)]="repairOrder.client.clientPhoneNumber"
-                                     name="repairOrder.client.clientPhoneNumber"></label>
+    <table style="width: 100%;" border="0">
+      <tbody>
+      <tr>
+        <td width="50%">
+          <div class="divTable">
+            <div class="divTableBody">
+              <div class="divTableRow">
+                <div class="divTableCell">
+                  <div class="divTable">
+                    <div class="divTableBody">
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Clint's information</b>
+                          <div class="form-group">
+                            <label>First Name<input type="text" class="form-control"
+                                                    [(ngModel)]="repairOrder.client.firstName"
+                                                    name="repairOrder.client.firstName"></label>
+                            <label>Last Name<input type="text" class="form-control"
+                                                   [(ngModel)]="repairOrder.client.lastName"
+                                                   name="repairOrder.client.lastName"></label>
+                            <div>
+                              <label>Phone Number<input type="text" class="form-control"
+                                                        [(ngModel)]="repairOrder.client.clientPhoneNumber"
+                                                        name="repairOrder.client.clientPhoneNumber"></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Clint's address</b>
+                          <div class="form-group">
+                            <label>City<input type="text" class="form-control"
+                                              [(ngModel)]="repairOrder.client.address.city.cityName"
+                                              name="repairOrder.client.address.city.cityName"></label>
+                            <label>Street<input type="text" class="form-control"
+                                                [(ngModel)]="repairOrder.client.address.street.streetName"
+                                                name="repairOrder.client.address.street.streetName"></label>
+                            <div>
+                              <label>House<input type="text" class="form-control"
+                                                 [(ngModel)]="repairOrder.client.address.houseNumber"
+                                                 name="repairOrder.client.address.houseNumber"></label>
+                              <label>Apartment<input type="text" class="form-control"
+                                                     [(ngModel)]="repairOrder.client.address.apartmentNumber"
+                                                     name="repairOrder.client.address.apartmentNumber"></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Executor</b>
+                          <div class="form-group">
+                            <label>First Name<input type="text" class="form-control"
+                                                    [(ngModel)]="repairOrder.employee.firstName"
+                                                    name="repairOrder.employee.firstName"></label>
+                            <label>Last Name<input type="text" class="form-control"
+                                                   [(ngModel)]="repairOrder.employee.lastName"
+                                                   name="repairOrder.employee.lastName"></label>
+                            <div>
+                              <label>Post<input type="text" class="form-control"
+                                                [(ngModel)]="repairOrder.employee.employeeType.employeeTypeName"
+                                                name="repairOrder.employee.employeeType.employeeTypeName"></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Dates</b>
+                          <div class="form-group">
+                            <label>Start Date<input type=Date class="form-control"
+                                                    [(ngModel)]="repairOrder.repairOrderStartDate"
+                                                    name="repairOrder.repairOrderStartDate"></label>
+                            <label>Issue Date<input type=Date class="form-control"
+                                                    [(ngModel)]="repairOrder.repairOrderIssueDate"
+                                                    name="repairOrder.repairOrderIssueDate"></label>
+                            <label>End Date<input type=Date class="form-control"
+                                                  [(ngModel)]="repairOrder.repairOrderEndDate"
+                                                  name="repairOrder.repairOrderEndDate"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Cost</b>
+                          <div class="form-group">
+                            <label>Estimated Cost<input type="text" class="form-control"
+                                                        [(ngModel)]="repairOrder.repairOrderCostEstimated"
+                                                        name="repairOrder.repairOrderCostEstimated"></label>
+                            <label>Total Cost<input type="text" class="form-control"
+                                                    [(ngModel)]="repairOrder.repairOrderCostTotal"
+                                                    name="repairOrder.repairOrderCostTotal"></label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="divTableRow">
+                        <div class="divTableCell">
+                          <b>Spare Parts</b>
+                          <div class="form-group">
+                            <label>Spare Parts Name<input type="text" class="form-control"
+                                                          [(ngModel)]="repairOrder.sparePart.sparePartName"
+                                                          name="repairOrder.sparePart.sparePartName"></label>
+                            <label>Spare Parts Cost<input type="text" class="form-control"
+                                                          [(ngModel)]="repairOrder.sparePart.sparePartCost"
+                                                          name="repairOrder.sparePart.sparePartCost"></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
     </div>
-    <div class="form-group">
-      <label>firstName<input type="text" class="form-control" [(ngModel)]="repairOrder.client.firstName"
-                             name="repairOrder.client.firstName"></label>
-    </div>
-    <div class="form-group">
-      <label>lastName<input type="text" class="form-control" [(ngModel)]="repairOrder.client.lastName"
-                            name="repairOrder.client.lastName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>address.houseNumber<input type="text" class="form-control"
-                                       [(ngModel)]="repairOrder.client.address.houseNumber"
-                                       name="repairOrder.client.address.houseNumber"></label>
-    </div>
-    <div class="form-group">
-      <label>address.apartmentNumber<input type="text" class="form-control"
-                                           [(ngModel)]="repairOrder.client.address.apartmentNumber"
-                                           name="repairOrder.client.address.apartmentNumber"></label>
-    </div>
-
-    <div class="form-group">
-      <label>cityName<input type="text" class="form-control" [(ngModel)]="repairOrder.client.address.city.cityName"
-                            name="repairOrder.client.address.city.cityName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>streetName<input type="text" class="form-control"
-                              [(ngModel)]="repairOrder.client.address.street.streetName"
-                              name="repairOrder.client.address.street.streetName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>deviceIMEIOrSn<input type="text" class="form-control" [(ngModel)]="repairOrder.device.deviceIMEIOrSn"
-                                  name="repairOrder.device.deviceIMEIOrSn"></label>
-    </div>
-    <div class="form-group">
-      <label>devicePassword<input type="text" class="form-control" [(ngModel)]="repairOrder.device.devicePassword"
-                                  name="repairOrder.device.devicePassword"></label>
-    </div>
-
-    <div class="form-group">
-      <label>typeName<input type="text" class="form-control" [(ngModel)]="repairOrder.device.type.typeName"
-                            name="repairOrder.device.type.typeName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>modelName<input type="text" class="form-control" [(ngModel)]="repairOrder.device.model.modelName"
-                             name="repairOrder.device.model.modelName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>brandName<input type="text" class="form-control" [(ngModel)]="repairOrder.device.brand.brandName"
-                             name="repairOrder.device.brand.brandName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>appearanceName<input type="text" class="form-control"
-                                  [(ngModel)]="repairOrder.device.appearance.appearanceName"
-                                  name="repairOrder.device.appearance.appearanceName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>complectationName<input type="text" class="form-control"
-                                     [(ngModel)]="repairOrder.device.complectation.complectationName"
-                                     name="repairOrder.device.complectation.complectationName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>defectName<input type="text" class="form-control" [(ngModel)]="repairOrder.device.defect.defectName"
-                              name="repairOrder.device.defect.defectName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>employee.firstName<input type="text" class="form-control" [(ngModel)]="repairOrder.employee.firstName"
-                                      name="repairOrder.employee.firstName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>employee.lastName<input type="text" class="form-control" [(ngModel)]="repairOrder.employee.lastName"
-                                     name="repairOrder.employee.lastName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>employeeTypeName<input type="text" class="form-control"
-                                    [(ngModel)]="repairOrder.employee.employeeType.employeeTypeName"
-                                    name="repairOrder.employee.employeeType.employeeTypeName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>sparePartName<input type="text" class="form-control" [(ngModel)]="repairOrder.sparePart.sparePartName"
-                                 name="repairOrder.sparePart.sparePartName"></label>
-    </div>
-
-    <div class="form-group">
-      <label>sparePartCost<input type="text" class="form-control" [(ngModel)]="repairOrder.sparePart.sparePartCost"
-                                 name="repairOrder.sparePart.sparePartCost"></label>
-    </div>
-
-    <div class="form-group">
-      <label>statusName<input type="text" class="form-control" [(ngModel)]="repairOrder.status.statusName"
-                              name="repairOrder.status.statusName"></label>
-    </div>
-
-
+        </td>
+        <td width="50%">
+          <div class="divTableCell">
+            <div class="divTable">
+              <div class="divTableBody">
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <b>Status</b>
+                    <div class="form-group">
+                      <label>Order Status<input type="text" class="form-control"
+                                                [(ngModel)]="repairOrder.status.statusName"
+                                                name="repairOrder.status.statusName"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <b>Device Information</b>
+                    <div class="form-group">
+                      <label>Device Type<input type="text" class="form-control"
+                                               [(ngModel)]="repairOrder.device.type.typeName"
+                                               name="repairOrder.device.type.typeName"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <div class="form-group">
+                      <label>Brand<input type="text" class="form-control"
+                                         [(ngModel)]="repairOrder.device.brand.brandName"
+                                         name="repairOrder.device.brand.brandName"></label>
+                      <label>Model<input type="text" class="form-control"
+                                         [(ngModel)]="repairOrder.device.model.modelName"
+                                         name="repairOrder.device.model.modelName"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <div class="form-group">
+                      <label>IMEI or SN<input type="text" class="form-control"
+                                              [(ngModel)]="repairOrder.device.deviceIMEIOrSn"
+                                              name="repairOrder.device.deviceIMEIOrSn"></label>
+                      <label>devicePassword<input type="text" class="form-control"
+                                                  [(ngModel)]="repairOrder.device.devicePassword"
+                                                  name="repairOrder.device.devicePassword"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <div class="form-group">
+                      <label>Defect<input type="text" class="form-control"
+                                          [(ngModel)]="repairOrder.device.defect.defectName"
+                                          name="repairOrder.device.defect.defectName"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <div class="form-group">
+                      <label>Complectation<input type="text" class="form-control"
+                                                 [(ngModel)]="repairOrder.device.complectation.complectationName"
+                                                 name="repairOrder.device.complectation.complectationName"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="divTableRow">
+                  <div class="divTableCell">
+                    <div class="form-group">
+                      <label>Appearance<input type="text" class="form-control"
+                                              [(ngModel)]="repairOrder.device.appearance.appearanceName"
+                                              name="repairOrder.device.appearance.appearanceName"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
