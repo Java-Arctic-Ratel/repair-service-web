@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../order';
+import {RepairOrder} from '../model/repairOrder';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OrderService} from '../order.service';
 
@@ -11,29 +11,87 @@ import {OrderService} from '../order.service';
 export class UpdateOrderComponent implements OnInit {
 
   id: number;
-  order: Order;
   submitted: any;
+  repairOrder: RepairOrder = {
+    "repairOrderId": null,
+    "repairOrderStartDate": null,
+    "repairOrderEndDate": null,
+    "repairOrderIssueDate": null,
+    "repairOrderCostEstimated": null,
+    "repairOrderCostTotal": null,
+    "client": {
+      "clientPhoneNumber": null,
+      "firstName": null,
+      "lastName": null,
+      "address": {
+        "houseNumber": null,
+        "apartmentNumber": null,
+        "city": {
+          "cityName": null
+        },
+        "street": {
+          "streetName": null
+        }
+      }
+    },
+    "device": {
+      "deviceIMEIOrSn": null,
+      "devicePassword": null,
+      "type": {
+        "typeName": null
+      },
+      "model": {
+        "modelName": null
+      },
+      "brand": {
+        "brandName": null
+      },
+      "appearance": {
+        "appearanceName": null
+      },
+      "complectation": {
+        "complectationName": null
+      },
+      "defect": {
+        "defectName": null
+      }
+    },
+    "employee": {
+      "firstName": null,
+      "lastName": null,
+      "employeeType": {
+        "employeeTypeName": null
+      }
+    },
+    "sparePart": {
+      "sparePartName": null,
+      "sparePartCost": null
+    },
+    "status": {
+      "statusName": null
+    }
+  };
 
   constructor(private route: ActivatedRoute, private router: Router,
               private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.order = new Order();
+    this.repairOrder = new RepairOrder();
 
-    this.id = this.route.snapshot.params.id;
+    this.id = this.route.snapshot.params['id'];
 
     this.orderService.getOrder(this.id)
       .subscribe(data => {
-        console.log(data)
-        this.order = data;
+        console.log(data);
+        this.repairOrder = data;
       }, error => console.log(error));
   }
 
   updateOrder() {
-    this.orderService.updateOrder(this.id, this.order)
+    this.orderService.updateOrder(this.repairOrder)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.order = new Order();
+    this.repairOrder = new RepairOrder();
     this.gotoList();
   }
 
@@ -42,6 +100,6 @@ export class UpdateOrderComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/orders']);
+    this.router.navigate(['/order']);
   }
 }

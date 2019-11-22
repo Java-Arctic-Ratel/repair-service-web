@@ -118,6 +118,10 @@
               "devServerTarget": "angular8-springboot-client:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

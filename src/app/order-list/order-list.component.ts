@@ -1,9 +1,8 @@
-import {OrderDetailsComponent} from './../order-details/order-details.component';
-import {Observable} from 'rxjs';
 import {OrderService} from '../order.service';
-import {Order} from './../order';
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {Router} from "@angular/router";
+import {PaginationPlugin} from "bootstrap-vue";
 
 @Component({
   selector: 'app-order-list',
@@ -11,42 +10,41 @@ import {Router} from '@angular/router';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Observable<Order[]>;
+  private page: number = 0;
+  private orders: Array<any>;
+  private pages: Array<number>;
 
-  constructor(private orderService: OrderService,
-              private router: Router) {
+  faPlusCircle = faPlusCircle;
+
+  getOrders() {
+    this._orderService.getOrders(this.page).subscribe(
+      data => {
+        this.orders = data['content'];
+        this.pages = new Array(data['totalPages']);
+      },
+      (error) => {
+        console.log(error.error.message);
+      }
+    );
   }
-
-  ngOnInit() {
-    this.reloadData();
-  }
-
-  reloadData() {
-    this.orders = this.orderService.getOrdersList();
-  }
-
-  deleteOrder(ordersId: number) {
-    this.orderService.deleteOrder(ordersId)
-
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
-  }
-
 
   orderDetails(ordersId: number) {
     this.router.navigate(['details', ordersId]);
   }
 
-  updateOrder(ordersId: number) {
-    this.router.navigate(['update', ordersId]);
+  constructor(private _orderService: OrderService,
+              private router: Router) {
   }
 
-  createOrder(ordersId: number) {
-
-    this.orderService.createOrder(new Order());
+  onSelect(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.getOrders()
   }
+
+  ngOnInit() {
+    this.getOrders();
+  }
+
+
 }

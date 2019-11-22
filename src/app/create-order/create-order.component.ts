@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../order';
+import {RepairOrder} from '../model/repairOrder';
 import {Router} from '@angular/router';
 import {OrderService} from '../order.service';
 
@@ -10,7 +10,66 @@ import {OrderService} from '../order.service';
 })
 export class CreateOrderComponent implements OnInit {
 
-  order: Order = new Order();
+  repairOrder: RepairOrder = {
+    "repairOrderId": null,
+    "repairOrderStartDate": null,
+    "repairOrderEndDate": null,
+    "repairOrderIssueDate": null,
+    "repairOrderCostEstimated": null,
+    "repairOrderCostTotal": null,
+    "client": {
+      "clientPhoneNumber": null,
+      "firstName": null,
+      "lastName": null,
+      "address": {
+        "houseNumber": null,
+        "apartmentNumber": null,
+        "city": {
+          "cityName": null
+        },
+        "street": {
+          "streetName": null
+        }
+      }
+    },
+    "device": {
+      "deviceIMEIOrSn": null,
+      "devicePassword": null,
+      "type": {
+        "typeName": null
+      },
+      "model": {
+        "modelName": null
+      },
+      "brand": {
+        "brandName": null
+      },
+      "appearance": {
+        "appearanceName": null
+      },
+      "complectation": {
+        "complectationName": null
+      },
+      "defect": {
+        "defectName": null
+      }
+    },
+    "employee": {
+      "firstName": null,
+      "lastName": null,
+      "employeeType": {
+        "employeeTypeName": null
+      }
+    },
+    "sparePart": {
+      "sparePartName": null,
+      "sparePartCost": null
+    },
+    "status": {
+      "statusName": null
+    }
+  };
+
   submitted = false;
 
   constructor(private orderService: OrderService,
@@ -20,15 +79,9 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  newOrder(): void {
-    this.submitted = false;
-    this.order = new Order();
-  }
-
   save() {
-    this.orderService.createOrder(this.order)
+    this.orderService.createOrder(this.repairOrder)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.order = new Order();
     this.gotoList();
   }
 
@@ -38,6 +91,6 @@ export class CreateOrderComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/orders']);
+    // this.router.navigate(['/order']);
   }
 }

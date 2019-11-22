@@ -1,12 +1,12 @@
-<div>
-  <div>
-    <h2>Order List</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>RepairOrder List</h2>
   </div>
-  <div>
-    <table class="table table-responsive-sm table-align-middle fa-text-width=100% table-bordered">
+  <div class="panel-body">
+    <table class="table table-striped">
       <thead>
       <tr>
-        <th class="text-center">Order</th>
+        <th class="text-center">RepairOrder</th>
         <th class="text-center">Status</th>
         <th class="text-center">Deadline</th>
         <th class="text-center">Client</th>
@@ -19,55 +19,63 @@
         <th class="text-center">Total cost</th>
       </tr>
       </thead>
+
       <tbody>
-
-      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.id)">
+      <tr *ngFor="let repairOrder of orders" (click)="orderDetails(repairOrder.repairOrderId)">
         <td class="text-center">
-          <div>#{{order.id}}</div>
-          <div class="small text-muted">{{order.ordersStartDate}}</div>
+          <div>#{{repairOrder.repairOrderId}}</div>
+          <div class="small text-muted">{{repairOrder.repairOrderStartDate}}</div>
         </td>
         <td class="text-center">
-          <div><span class="badge badge-warning"><strong>{{order.status.statusName}}</strong></span></div>
+          <div><span class="badge badge-warning"><strong>{{repairOrder.status.statusName}}</strong></span></div>
         </td>
         <td class="text-center">
-          <div><strong>{{order.ordersEndDate}}</strong></div>
+          <div><strong>{{repairOrder.repairOrderEndDate}}</strong></div>
         </td>
         <td class="text-center">
-          <div>{{order.client.firstName.firstName}}&nbsp;{{order.client.lastName.lastName}}&nbsp;{{order.client.patronymic.patronymic}}</div>
-          <div class="small text-muted">{{order.client.clientPhoneNumber}}</div>
+          <div>{{repairOrder.client.firstName}}&nbsp;{{repairOrder.client.lastName}}</div>
+          <div class="small text-muted">{{repairOrder.client.clientPhoneNumber}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceCondition.defect.defectName}}</div>
+          <div>{{repairOrder.device.defect.defectName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.type.typeName}}</div>
+          <div>{{repairOrder.device.type.typeName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceIMEIOrSn}}</div>
+          <div>{{repairOrder.device.deviceIMEIOrSn}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.brand.brandName}}</div>
-          <div>{{order.device.model.modelName}}</div>
+          <div>{{repairOrder.device.brand.brandName}}</div>
+          <div>{{repairOrder.device.model.modelName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceCondition.appearance.appearanceName}}</div>
-          <div>{{order.device.deviceCondition.complectation.complectationName}}</div>
+          <div>{{repairOrder.device.appearance.appearanceName}}</div>
+          <div>{{repairOrder.device.complectation.complectationName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.devicePassword}}</div>
+          <div>{{repairOrder.device.devicePassword}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.ordersCostEstimated}}</div>
-
+          <div>{{repairOrder.repairOrderCostEstimated}}</div>
         </td>
       </tr>
+
       <div class="addbutton">
-        <a mat-fab routerLink="../add">
-          <mat-icon>add</mat-icon>
+        <a routerLink="../add">
+          <fa-icon class="greenIcon" [icon]="faPlusCircle" size="5x"></fa-icon>
         </a>
       </div>
       </tbody>
     </table>
+    <hr>
+  </div>
+
+  <div class="container">
+    <ul class="pagination" *ngIf="orders.length > 0">
+      <li class="page-link" *ngFor="let page of pages, let i = index">
+        <a class="page-item active" href="#" (click)="onSelect(i, $event)">{{i}}</a></li>
+    </ul>
+
   </div>
 </div>
-
