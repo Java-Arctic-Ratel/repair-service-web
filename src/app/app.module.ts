@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {UpdateOrderComponent} from './update-order/update-order.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {JwPaginationComponent} from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     CreateOrderComponent,
     OrderDetailsComponent,
     OrderListComponent,
-    UpdateOrderComponent
+    UpdateOrderComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -25,11 +27,10 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

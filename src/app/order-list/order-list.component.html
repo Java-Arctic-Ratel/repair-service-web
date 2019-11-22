@@ -19,45 +19,45 @@
         <th class="text-center">Total cost</th>
       </tr>
       </thead>
-      <tbody>
 
-      <tr *ngFor="let order of orders | async" (click)="orderDetails(order.repairOrderId)">
+      <tbody>
+      <tr *ngFor="let repairOrder of pageOrder.content">
         <td class="text-center">
-          <div>#{{order.repairOrderId}}</div>
-          <div class="small text-muted">{{order.repairOrderStartDate}}</div>
+          <div>#{{repairOrder.repairOrderId}}</div>
+          <div class="small text-muted">{{repairOrder.repairOrderStartDate}}</div>
         </td>
         <td class="text-center">
-          <div><span class="badge badge-warning"><strong>{{order.status.statusName}}</strong></span></div>
+          <div><span class="badge badge-warning"><strong>{{repairOrder.status.statusName}}</strong></span></div>
         </td>
         <td class="text-center">
-          <div><strong>{{order.repairOrderEndDate}}</strong></div>
+          <div><strong>{{repairOrder.repairOrderEndDate}}</strong></div>
         </td>
         <td class="text-center">
-          <div>{{order.client.firstName}}&nbsp;{{order.client.lastName}}</div>
-          <div class="small text-muted">{{order.client.clientPhoneNumber}}</div>
+          <div>{{repairOrder.client.firstName}}&nbsp;{{repairOrder.client.lastName}}</div>
+          <div class="small text-muted">{{repairOrder.client.clientPhoneNumber}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.defect.defectName}}</div>
+          <div>{{repairOrder.device.defect.defectName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.type.typeName}}</div>
+          <div>{{repairOrder.device.type.typeName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.deviceIMEIOrSn}}</div>
+          <div>{{repairOrder.device.deviceIMEIOrSn}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.brand.brandName}}</div>
-          <div>{{order.device.model.modelName}}</div>
+          <div>{{repairOrder.device.brand.brandName}}</div>
+          <div>{{repairOrder.device.model.modelName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.appearance.appearanceName}}</div>
-          <div>{{order.device.complectation.complectationName}}</div>
+          <div>{{repairOrder.device.appearance.appearanceName}}</div>
+          <div>{{repairOrder.device.complectation.complectationName}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.device.devicePassword}}</div>
+          <div>{{repairOrder.device.devicePassword}}</div>
         </td>
         <td class="text-center">
-          <div>{{order.repairOrderCostEstimated}}</div>
+          <div>{{repairOrder.repairOrderCostEstimated}}</div>
         </td>
       </tr>
 
@@ -69,8 +69,12 @@
       </tbody>
     </table>
   </div>
-  <div class="panel-footer">
-    pagination panel
-  </div>
+</div>
+<div class="card-footer pb-0 pt-3">
+  <jw-pagination [items]="pageOrder" (changePage)="onChangePage($event)"></jw-pagination>
+  <!--    <ul style="margin-left: 180px;margin-top:-10px;" class="pagination" *ngIf="pageOrder?.content" >-->
+  <!--      <li class="pagination" *ngFor="let page of ' '.repeat(pageOrder.totalPages).split(''), let i = index "-->
+  <!--          (click)="onSelect(i)" [class.active]="i === selectedPage" ><a class="page-link" href="#">{{i}}</a></li>-->
+  <!--    </ul>-->
 </div>
 

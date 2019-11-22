@@ -1,10 +1,9 @@
-import {OrderDetailsComponent} from './../order-details/order-details.component';
-import {Observable} from 'rxjs';
 import {OrderService} from '../order.service';
-import {RepairOrder} from '../model/repairOrder';
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+// import {Router} from '@angular/router';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {RepairOrderPage} from "../model/repairOrderPage";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-list',
@@ -12,22 +11,37 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  orders: Observable<RepairOrder[]>;
+  pageOrder: RepairOrderPage;
+  selectedPage: number = 0;
   faPlusCircle = faPlusCircle;
 
+  getRepairOrderPage(page: number): void {
+    this.orderService.getRepairOrderPage(page)
+      .subscribe(pageOrder => this.pageOrder = pageOrder);
+  }
+
   constructor(private orderService: OrderService,
-              private router: Router) {
+              private router: Router,
+  ) {
+  }
+
+  // orderDetails(repairOrderId: number) {
+  //   this.router.navigate(['details', repairOrderId]);
+  // }
+
+  onSelect(page: number): void {
+    console.log("selected page : " + page);
+    this.selectedPage = page;
+    this.getRepairOrderPage(page);
   }
 
   ngOnInit() {
-    this.reloadData();
+    this.getRepairOrderPage(0);
   }
 
-  reloadData() {
-    this.orders = this.orderService.getOrdersList();
+
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOrder;
   }
 
-  orderDetails(ordersId: number) {
-    this.router.navigate(['details', ordersId]);
-  }
 }
