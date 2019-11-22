@@ -21,7 +21,7 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let repairOrder of pageOrder.content">
+      <tr *ngFor="let repairOrder of orders" (click)="orderDetails(repairOrder.repairOrderId)">
         <td class="text-center">
           <div>#{{repairOrder.repairOrderId}}</div>
           <div class="small text-muted">{{repairOrder.repairOrderStartDate}}</div>
@@ -68,13 +68,14 @@
       </div>
       </tbody>
     </table>
+    <hr>
+  </div>
+
+  <div class="container">
+    <ul class="pagination" *ngIf="orders.length > 0">
+      <li class="page-link" *ngFor="let page of pages, let i = index">
+        <a class="page-item active" href="#" (click)="onSelect(i, $event)">{{i}}</a></li>
+    </ul>
+
   </div>
 </div>
-<div class="card-footer pb-0 pt-3">
-  <jw-pagination [items]="pageOrder" (changePage)="onChangePage($event)"></jw-pagination>
-  <!--    <ul style="margin-left: 180px;margin-top:-10px;" class="pagination" *ngIf="pageOrder?.content" >-->
-  <!--      <li class="pagination" *ngFor="let page of ' '.repeat(pageOrder.totalPages).split(''), let i = index "-->
-  <!--          (click)="onSelect(i)" [class.active]="i === selectedPage" ><a class="page-link" href="#">{{i}}</a></li>-->
-  <!--    </ul>-->
-</div>
-

@@ -1,9 +1,8 @@
 import {OrderService} from '../order.service';
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-// import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import {RepairOrderPage} from "../model/repairOrderPage";
 import {Router} from "@angular/router";
+import {PaginationPlugin} from "bootstrap-vue";
 
 @Component({
   selector: 'app-order-list',
@@ -11,37 +10,41 @@ import {Router} from "@angular/router";
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
-  pageOrder: RepairOrderPage;
-  selectedPage: number = 0;
+  private page: number = 0;
+  private orders: Array<any>;
+  private pages: Array<number>;
+
   faPlusCircle = faPlusCircle;
 
-  getRepairOrderPage(page: number): void {
-    this.orderService.getRepairOrderPage(page)
-      .subscribe(pageOrder => this.pageOrder = pageOrder);
+  getOrders() {
+    this._orderService.getOrders(this.page).subscribe(
+      data => {
+        this.orders = data['content'];
+        this.pages = new Array(data['totalPages']);
+      },
+      (error) => {
+        console.log(error.error.message);
+      }
+    );
   }
 
-  constructor(private orderService: OrderService,
-              private router: Router,
-  ) {
+  orderDetails(ordersId: number) {
+    this.router.navigate(['details', ordersId]);
   }
 
-  // orderDetails(repairOrderId: number) {
-  //   this.router.navigate(['details', repairOrderId]);
-  // }
+  constructor(private _orderService: OrderService,
+              private router: Router) {
+  }
 
-  onSelect(page: number): void {
-    console.log("selected page : " + page);
-    this.selectedPage = page;
-    this.getRepairOrderPage(page);
+  onSelect(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.getOrders()
   }
 
   ngOnInit() {
-    this.getRepairOrderPage(0);
+    this.getOrders();
   }
 
-
-  onChangePage(pageOfItems: Array<any>) {
-    this.pageOrder;
-  }
 
 }
